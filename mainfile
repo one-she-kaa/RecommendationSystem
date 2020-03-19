@@ -1,0 +1,97 @@
+import pandas as pd    #detailsmain
+import cosrecommend as rs
+import other_recommend as ofrs
+
+
+def getrating(uid, uname):
+    df = pd.read_csv("C:/Users/Acer/Documents/Ntcc/Customer.csv")
+    print("\nPlease Give Your Feedback!!: ")
+    r = input("Which Restaurant will you choice : ")
+    rate = input("How much will you rate this Restaurant (1-5): ")
+    new_row = pd.DataFrame({'Customer_ID': uid, 'Customer_Name': uname, 'Restaurant_Name': r, 'Rating': rate}, index=[0])
+    mdf = pd.concat([new_row,df],sort = True)
+    mdf.to_csv("C:/Users/Acer/Documents/Ntcc/Customer.csv")
+
+def retrieve(ids):
+    df = pd.read_csv("C:/Users/Acer/Documents/Ntcc/Customer.csv")
+    for row in df.index:
+        k = df['Customer_ID'][row] == ids
+        if k == True:
+            return df['Customer_Name'][row]
+
+
+print("\n\t\t\t\t HELLO AND WELCOME TO RESTAURANT SEARCH!!!! ")
+a = input("\t 1.New User \n\t 2.Existing User ")
+
+if a == '1': #for new user
+    print("\t\t\tHello New User!")
+    name = input("\tEnter your name: ")
+    id = input("\tEnter New User id : ")
+    print("\tUse this for later logins!")
+
+
+    for w in range(5):
+        print("\n\tWhat is your requirement for the restaurant? :")
+        choice = input("\t1. TOP 10 \t 2.Similar Restaurants \t 3.Cuisine \t 4.Location \t5. Exit\nChoose: ")
+
+        if choice == '1':
+            print('\tThe Top 10 Restaurants to look at:')
+            ofrs.top_10_rest()
+
+
+        elif choice =='2':
+            rs.recommendation_func()
+
+
+        elif choice =='3':
+            ofrs.cuisine_recommendation()
+
+
+        elif choice =='4':
+            ofrs.locality_recommendation()
+
+        elif choice =='5':
+            getrating(id, name)
+            break
+
+        else:
+            print("\t \t Wrong Choice Entered!!!!")
+
+
+
+elif a == '2':                #for old user
+
+    ids = input("Enter Your User ID: ")
+    o = retrieve(ids)
+    print("\t\t\tWelcome back "+o+" !!")
+    i =1
+    for i in range(5):
+        print("\tWhat is your requirement for the restaurant? :")
+        choice = input("\t1. TOP 10 \t 2.Similar Restaurants \t 3.Cuisine \t 4.Location \t5. Exit\nChoose: ")
+
+        if choice == '1':
+            print('\tThe Top 10 Restaurants to look at:')
+            ofrs.top_10_rest()
+
+
+        elif choice == '2':
+            rs.recommendation_func()
+
+        elif choice == '3':
+            ofrs.cuisine_recommendation()
+
+        elif choice == '4':
+            ofrs.locality_recommendation()
+
+        elif choice == '5':
+            getrating(ids, o)
+            break
+
+        else:
+            print("\t \t Wrong Choice Entered!!!!")
+
+
+else :
+    print("Entered Wrong Choice!!")
+
+print("\n\t\t\t\t\t\tThank You For Using Restaurant Search!!!!")
