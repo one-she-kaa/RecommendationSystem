@@ -4,16 +4,16 @@ import other_recommend as ofrs
 
 
 def getrating(uid, uname):
-    df = pd.read_csv("C:/Users/Acer/Documents/Ntcc/Customer.csv")
+    df = pd.read_csv("Customer.csv")
     print("\nPlease Give Your Feedback!!: ")
     r = input("Which Restaurant will you choice : ")
     rate = input("How much will you rate this Restaurant (1-5): ")
     new_row = pd.DataFrame({'Customer_ID': uid, 'Customer_Name': uname, 'Restaurant_Name': r, 'Rating': rate}, index=[0])
     mdf = pd.concat([new_row,df],sort = True)
-    mdf.to_csv("C:/Users/Acer/Documents/Ntcc/Customer.csv")
+    mdf.to_csv("Customer.csv")
 
 def retrieve(ids):
-    df = pd.read_csv("C:/Users/Acer/Documents/Ntcc/Customer.csv")
+    df = pd.read_csv("Customer.csv")
     for row in df.index:
         k = df['Customer_ID'][row] == ids
         if k == True:
