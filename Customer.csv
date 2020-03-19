@@ -1,0 +1,14 @@
+,Customer_ID,Customer_Name,Rating,Restaurant_Name,Unnamed: 0,Unnamed: 0.1,Unnamed: 0.1.1,Unnamed: 0.1.1.1,Unnamed: 0.1.1.1.1,Unnamed: 0.1.1.1.1.1,Unnamed: 0.1.1.1.1.1.1,Unnamed: 0.1.1.1.1.1.1.1,Unnamed: 0.1.1.1.1.1.1.1.1
+0,suraj123,Suraj,2,Barista,,,,,,,,,
+0,van,Vanshika,4.0,Bikanerwala,0.0,,,,,,,,
+1,rup,Rupa,3.0,Bistro 37,0.0,0.0,,,,,,,
+2,suraj123,Suraj,2.0,Food Hut,1.0,0.0,0.0,,,,,,
+3,sir123,Sirat,,,2.0,1.0,0.0,0.0,,,,,
+4,vish_1,Vishakha,,,3.0,2.0,1.0,0.0,0.0,,,,
+5,rup,Rupa,,,4.0,3.0,2.0,1.0,0.0,0.0,,,
+6,gaur2,Gaurav,5.0,Nazeer Foods,5.0,4.0,3.0,2.0,1.0,0.0,0.0,,
+7,gaur2,Gaurav,3.0,Imly,6.0,5.0,4.0,3.0,2.0,1.0,0.0,0.0,
+8,sha,Shayam,4.0,RollsKing,7.0,6.0,5.0,4.0,3.0,2.0,1.0,0.0,0.0
+9,rup,Rupa,3.0,RollsKing,8.0,7.0,6.0,5.0,4.0,3.0,2.0,1.0,0.0
+10,van,Vanshika,5.0,Theos,9.0,8.0,7.0,6.0,5.0,4.0,3.0,2.0,1.0
+11,aar,Aarush,4.0,Carls Jr.,10.0,9.0,8.0,7.0,6.0,5.0,4.0,3.0,2.0
