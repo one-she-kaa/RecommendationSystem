@@ -17,7 +17,7 @@ def recommendation_func():
 
 
 
-    df = pd.read_csv("C:/Users/Acer/Documents/Ntcc/NoidaRestaurants.csv")
+    df = pd.read_csv("NoidaRestaurants.csv")
 
     features = ['Locality', 'Cuisines', 'Rating text', 'Has Online delivery', 'Has Table booking', 'Votes']
     for feature in features:
