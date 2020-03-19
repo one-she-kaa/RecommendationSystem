@@ -1,0 +1,44 @@
+import pandas as pd
+
+df = pd.read_csv("NoidaRestaurants.csv")
+def top_10_rest():
+    md = df.sort_values(by='Votes', ascending=0)
+    i=0
+    for row in md.index:
+        print(md['Restaurant_Name'][row] + " \t \t" + md['Address'][row])
+        i = i + 1
+        if i > 10:
+            break
+
+
+def cuisine_recommendation():
+#search using string function no cosine function will be used
+#sort by votes in descending order
+#similar to cuisine
+    substring = input("Enter the Desired Cuisine to eat: ")
+    md = df.sort_values(by='Votes', ascending=0)
+    i=0
+
+    for row in md.index:
+        t = md['Cuisines'][row].find(substring)
+        if t != -1:
+             print(md['Restaurant_Name'][row] + " \t \t" + md['Address'][row])
+             i = i + 1
+             if i > 10:
+                 break
+
+def locality_recommendation():
+#search using string function no cosine function will be used
+#sort by votes in descending order
+#similar to cuisine
+    substring = input("Enter the Desired Location to eat: ")
+    md = df.sort_values(by='Votes', ascending=0)
+    i = 0
+
+    for row in md.index:
+        t = md['Locality'][row].find(substring)
+        if t != -1:
+            print(md['Restaurant_Name'][row] + " \t \t" + md['Address'][row])
+            i = i + 1
+            if i > 10:
+                break
