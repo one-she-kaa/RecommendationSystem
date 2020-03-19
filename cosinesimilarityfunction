@@ -1,1 +1,54 @@
+import pandas as pd
+import numpy as np
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+def recommendation_func():
+    def get_title_from_index(index):
+        return df[df['Restaurant_ID'] == index]['Restaurant_Name'].values[0]
+
+
+    def get_address_from_index(index):
+        return df[df['Restaurant_ID'] == index]['Address'].values[0]
+
+
+    def get_index_from_title(title):
+        return df[df['Restaurant_Name'] == title]['Restaurant_ID'].values[0]
+
+
+
+    df = pd.read_csv("C:/Users/Acer/Documents/Ntcc/NoidaRestaurants.csv")
+
+    features = ['Locality', 'Cuisines', 'Rating text', 'Has Online delivery', 'Has Table booking', 'Votes']
+    for feature in features:
+     df[feature] = df[feature].fillna('')
+
+
+    def combine_features(row):
+        try:
+            return row['Locality'] + " " + row['Cuisines'] + " " + row[
+                'Has Online delivery'] + " " + row['Rating text'] + " " + row['Has Online delivery'] + " " + row[
+                   'Has Table booking']
+
+        except:
+            print("Error:", row)
+
+
+    df["combined_features"] = df.apply(combine_features, axis=1)
+    cv = CountVectorizer()
+
+    count_matrix = cv.fit_transform(df["combined_features"])
+    cosine_sim = cosine_similarity(count_matrix, count_matrix)
+
+    rest_user_likes = input("Enter any Restaurant in Noida: ")
+
+    rest_index = get_index_from_title(rest_user_likes)
+    similar_rest = list(enumerate(cosine_sim[rest_index]))
+    sorted_similar_rest = sorted(similar_rest, key=lambda x: x[1], reverse=True)
+    i = 0
+    for element in sorted_similar_rest:
+        print(get_title_from_index(element[0]) + " \t\t " + get_address_from_index(element[0]))
+        i = i + 1
+        if i > 10:
+            break
 
