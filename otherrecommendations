@@ -10,7 +10,6 @@ def top_10_rest():
         if i > 10:
             break
 
-
 def cuisine_recommendation():
 #search using string function no cosine function will be used
 #sort by votes in descending order
